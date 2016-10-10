@@ -58,6 +58,15 @@ public class UserService {
         );
     }
 
+    public synchronized UUID addUser(@NotNull final User user) {
+        UUID id;
+        do {
+            id = UUID.randomUUID();
+        } while (users.containsKey(id));
+        users.put(id, user.toBuilder().id(id).build());
+        return id;
+    }
+
     public Collection<User> getAllUsers() {
         return users.values();
     }
