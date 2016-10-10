@@ -30,10 +30,19 @@
         <url>https://github.com/dockergarten/randomuser</url>
     </scm>
     <dependencies>
+        <!-- ****************** -->
+        <!-- * provided scope * -->
+        <!-- ****************** -->
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-api</artifactId>
             <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.16.10</version>
             <scope>provided</scope>
         </dependency>
     </dependencies>
