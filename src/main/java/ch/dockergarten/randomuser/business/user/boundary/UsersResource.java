@@ -76,9 +76,10 @@ public class UsersResource {
 
     @DELETE
     @Path("{id}")
-    public User delete(@PathParam("id") @NotNull final UUID id) {
-        return userService.deleteUser(id)
+    public Response delete(@PathParam("id") @NotNull final UUID id) {
+        userService.deleteUser(id)
                 .orElseThrow(NotFoundException::new);
+        return Response.noContent().build();
     }
 
 }
