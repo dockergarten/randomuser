@@ -23,8 +23,11 @@ import ch.dockergarten.randomuser.business.user.entity.User;
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import java.util.Collection;
+import java.util.UUID;
 
 @Path("users")
 public class UsersResource {
@@ -39,6 +42,12 @@ public class UsersResource {
     @GET
     public Collection<User> read() {
         return userService.getAllUsers();
+    }
+
+    @GET
+    @Path("{id}")
+    public User read(@PathParam("id") @NotNull final UUID id) {
+        return userService.getUser(id).orElseThrow(NotFoundException::new);
     }
 
 }

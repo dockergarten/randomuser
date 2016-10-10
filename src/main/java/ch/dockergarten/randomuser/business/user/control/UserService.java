@@ -20,9 +20,10 @@ package ch.dockergarten.randomuser.business.user.control;
 import ch.dockergarten.randomuser.business.user.entity.User;
 
 import javax.annotation.PostConstruct;
+import javax.inject.Singleton;
 import javax.json.JsonArray;
 import javax.json.JsonObject;
-import javax.ws.rs.GET;
+import javax.validation.constraints.NotNull;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
 import javax.ws.rs.client.WebTarget;
@@ -30,11 +31,13 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.Collection;
 import java.util.Map;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.concurrent.ConcurrentHashMap;
 
 import static java.util.stream.Collectors.toMap;
 
+@Singleton
 public class UserService {
 
     private static final String RANDOM_USER_GENERATOR_URI = "https://randomuser.me/api/1.1/?results=100&nat=ch";
@@ -55,9 +58,12 @@ public class UserService {
         );
     }
 
-    @GET
     public Collection<User> getAllUsers() {
         return users.values();
+    }
+
+    public Optional<User> getUser(@NotNull final UUID id) {
+        return Optional.ofNullable(users.get(id));
     }
 
 }
