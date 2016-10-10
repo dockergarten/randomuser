@@ -28,9 +28,6 @@ import javax.json.JsonObject;
 import javax.json.JsonValue;
 import javax.validation.constraints.NotNull;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 @Value
@@ -53,18 +50,14 @@ public class User implements Serializable {
     private String phone;
     private String mobile;
     private String username;
-    private LocalDate birthday;
-    private LocalDateTime registered;
     private String pictureSmall;
     private String pictureMedium;
     private String pictureLarge;
 
     public static User fromRandomUserJSON(@NotNull final JsonValue jsonValue) {
         final JsonObject jsonObject = (JsonObject) jsonValue;
-        final DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         return User.builder()
-                .id(UUID.randomUUID()
-                )
+                .id(UUID.randomUUID())
                 .forename(jsonObject.getJsonObject("name").getString("first"))
                 .surname(jsonObject.getJsonObject("name").getString("last"))
                 .street(jsonObject.getJsonObject("location").getString("street"))
@@ -75,8 +68,6 @@ public class User implements Serializable {
                 .phone(jsonObject.getString("phone"))
                 .mobile(jsonObject.getString("cell"))
                 .username(jsonObject.getJsonObject("login").getString("username"))
-                .birthday(LocalDateTime.parse(jsonObject.getString("dob"), dateTimeFormatter).toLocalDate())
-                .registered(LocalDateTime.parse(jsonObject.getString("registered"), dateTimeFormatter))
                 .pictureSmall(jsonObject.getJsonObject("picture").getString("thumbnail"))
                 .pictureMedium(jsonObject.getJsonObject("picture").getString("medium"))
                 .pictureLarge(jsonObject.getJsonObject("picture").getString("large"))
