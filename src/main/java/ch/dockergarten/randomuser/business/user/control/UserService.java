@@ -66,4 +66,9 @@ public class UserService {
         return Optional.ofNullable(users.get(id));
     }
 
+    public Optional<User> updateUser(@NotNull final User user) {
+        return Optional.ofNullable(
+                users.computeIfPresent(user.getId(), (key, value) -> user));
+    }
+
 }
