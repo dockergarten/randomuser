@@ -22,6 +22,7 @@ import ch.dockergarten.randomuser.business.user.entity.User;
 
 import javax.inject.Inject;
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
 import javax.ws.rs.PUT;
@@ -57,6 +58,13 @@ public class UsersResource {
     public User update(@PathParam("id") @NotNull final UUID id,
                        @NotNull final User user) {
         return userService.updateUser(user.toBuilder().id(id).build())
+                .orElseThrow(NotFoundException::new);
+    }
+
+    @DELETE
+    @Path("{id}")
+    public User delete(@PathParam("id") @NotNull final UUID id) {
+        return userService.deleteUser(id)
                 .orElseThrow(NotFoundException::new);
     }
 

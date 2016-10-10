@@ -71,4 +71,10 @@ public class UserService {
                 users.computeIfPresent(user.getId(), (key, value) -> user));
     }
 
+    public Optional<User> deleteUser(@NotNull final UUID id) {
+        final User user = users.get(id);
+        users.remove(id);
+        return Optional.ofNullable(user);
+    }
+
 }
