@@ -40,7 +40,7 @@ import static java.util.stream.Collectors.toMap;
 @Singleton
 public class UserService {
 
-    private static final String RANDOM_USER_GENERATOR_URI = "https://randomuser.me/api/1.1/?results=100&nat=ch";
+    private static final String RANDOM_USER_GENERATOR_URI = "https://randomuser.me/api/1.1/?results=12&nat=ch";
     private final Map<UUID, User> users = new ConcurrentHashMap<>();
 
     @PostConstruct
