@@ -1,11 +1,9 @@
 *Random User*
 =============
 
-[![Issue Stats](http://issuestats.com/github/dockergarten/randomuser/badge/issue)](http://issuestats.com/github/dockergarten/randomuser) [![Issue Stats](http://issuestats.com/github/dockergarten/randomuser/badge/pr)](http://issuestats.com/github/dockergarten/randomuser) [![Docker Image Layers](https://badge.imagelayers.io/dockergarten/randomuser:latest.svg)](https://imagelayers.io/?images=dockergarten/randomuser:latest)
-
 **Provide random user data as a demo service for RESTful clients.**
 
-*Copyright (C) 2016 Marcus Fihlon*
+*Copyright (C) 2016, 2017 Marcus Fihlon*
 
 This program is free software: you can redistribute it and/or modify it under the terms of the GNU Affero General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 
@@ -40,6 +38,11 @@ Example:
 `http://localhost:1001/apidocs/`
 
 # Release Notes
+
+## Version 1.1
+
+- Updating application server
+- Limiting RAM usage
 
 ## Version 1.0
 
