@@ -39,6 +39,10 @@ Example:
 
 # Release Notes
 
+## Version 1.2
+
+- Adding support for CORS (cross-origin resource sharing)
+
 ## Version 1.1
 
 - Updating application server
