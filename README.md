@@ -39,6 +39,10 @@ Example:
 
 # Release Notes
 
+## Version 1.3
+
+- Fixing CORS problem (location header was not exposed)
+
 ## Version 1.2
 
 - Adding support for CORS (cross-origin resource sharing)
